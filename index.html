@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#260b12">
+  <title>رسالة سرية إلى إسراء ❤️</title>
+  <style>
+    :root {
+      --wine: #4a101f;
+      --deep: #210810;
+      --red: #8d263d;
+      --gold: #e5c18a;
+      --cream: #fff5e9;
+      --muted: #d9bfc0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100svh; overflow-x: hidden;
+      color: var(--cream);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at 50% 15%, rgba(145,39,65,.34), transparent 48%),
+        radial-gradient(ellipse at 50% 100%, rgba(97,20,42,.36), transparent 48%),
+        linear-gradient(145deg, #16060b, #2a0b14 55%, #17060c);
+      display: grid; place-items: center; padding: 28px 18px;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .2;
+      background-image: radial-gradient(#f0d3aa 0.7px, transparent .7px);
+      background-size: 27px 27px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+    .wrap { width: min(100%, 440px); text-align: center; position: relative; z-index: 1; }
+    .eyebrow {
+      color: var(--gold); letter-spacing: .22em; font-size: 10px;
+      direction: ltr; margin-bottom: 13px; opacity: .9;
+    }
+    h1 { font-size: clamp(27px, 8vw, 36px); font-weight: 500; margin: 0 0 9px; }
+    .intro { color: var(--muted); font-size: 14px; line-height: 1.9; margin: 0 auto 30px; }
+    .scene { height: 275px; display: grid; place-items: center; perspective: 1000px; }
+    .envelope {
+      width: min(310px, 84vw); height: 190px; position: relative; cursor: pointer;
+      filter: drop-shadow(0 24px 24px rgba(0,0,0,.38));
+      transform: translateY(8px);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .env-back {
+      position: absolute; inset: 0; border-radius: 8px;
+      background: linear-gradient(135deg, #a43b52, #64182c 65%, #3b0d1b);
+      border: 1px solid rgba(229,193,138,.55);
+    }
+    .letter-peek {
+      position: absolute; width: 86%; height: 155px; left: 7%; bottom: 12px;
+      border-radius: 4px; background: linear-gradient(145deg, #fff9ef, #ead9c5);
+      transition: transform 1.15s cubic-bezier(.2,.75,.2,1);
+      box-shadow: 0 2px 10px rgba(0,0,0,.16);
+    }
+    .letter-peek::before {
+      content: "إلى إسراء"; color: #74243a; font-family: Georgia, serif;
+      position: absolute; top: 18px; left: 0; right: 0; font-size: 17px;
+    }
+    .front {
+      position: absolute; inset: 0; border-radius: 8px; overflow: hidden;
+      background: linear-gradient(145deg, #8d2a43, #5a1428);
+      clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+      border: 1px solid rgba(229,193,138,.38);
+    }
+    .front::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(30deg, rgba(25,4,12,.17), transparent 60%);
+    }
+    .flap {
+      position: absolute; inset: 0; z-index: 4; transform-origin: top center;
+      background: linear-gradient(155deg, #b44a60, #762038 75%);
+      clip-path: polygon(0 0, 100% 0, 50% 62%);
+      transition: transform .9s cubic-bezier(.2,.7,.2,1), opacity .5s .35s;
+      border-top: 1px solid rgba(255,226,190,.35);
+    }
+    .seal {
+      position: absolute; z-index: 5; left: 50%; top: 54%; transform: translate(-50%,-50%);
+      width: 54px; height: 54px; border-radius: 50%;
+      display: grid; place-items: center; color: #f5d9a8; font-size: 23px;
+      background: radial-gradient(circle at 35% 30%, #c45a6b, #74152c 72%);
+      border: 1px solid #e6c18b; box-shadow: 0 3px 12px rgba(0,0,0,.25), inset 0 0 0 3px rgba(229,193,138,.16);
+      transition: opacity .3s, transform .5s;
+    }
+    .envelope.open .flap { transform: rotateX(180deg); opacity: .25; }
+    .envelope.open .seal { opacity: 0; transform: translate(-50%,-50%) scale(.5); }
+    .envelope.open .letter-peek { transform: translateY(-112px); transition-delay: .45s; }
+    .envelope.open { cursor: default; }
+    .tap-hint { color: var(--gold); font-size: 13px; margin-top: 8px; animation: pulse 1.8s infinite; }
+    @keyframes pulse { 50% { opacity: .48; } }
+    .letter {
+      text-align: right; color: #4a2630; background: linear-gradient(145deg, #fffaf1, #f0e1cf);
+      border: 1px solid rgba(229,193,138,.8); border-radius: 8px;
+      padding: 27px 23px 24px; margin: 5px auto 0; width: min(100%, 390px);
+      box-shadow: 0 22px 55px rgba(0,0,0,.3);
+      opacity: 0; transform: translateY(22px) scale(.98); max-height: 0; overflow: hidden;
+      transition: opacity .8s .65s, transform .8s .65s, max-height .9s .5s, margin .5s;
+    }
+    .letter.show { opacity: 1; transform: translateY(0) scale(1); max-height: 620px; margin-top: 20px; }
+    .letter .small { color: #9b5361; font-size: 10px; letter-spacing: .2em; direction: ltr; text-align: center; }
+    .letter h2 { text-align: center; color: #76243a; font-size: 25px; font-weight: 600; margin: 13px 0 18px; }
+    .letter p { font-size: 16px; line-height: 2.05; margin: 0 0 12px; }
+    .signature { text-align: left; color: #842b43; font-weight: 600; margin-top: 20px; }
+    .heart-line { text-align: center; color: #a53a55; font-size: 18px; margin-top: 13px; }
+    .footer { color: rgba(239,211,194,.55); font-size: 10px; margin-top: 24px; letter-spacing: .08em; }
+    .replay { margin-top: 16px; border: 1px solid rgba(229,193,138,.55); color: var(--gold);
+      background: transparent; padding: 10px 17px; border-radius: 30px; font-size: 12px; cursor: pointer; }
+    .replay:focus-visible, .envelope:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="eyebrow">A PRIVATE MESSAGE • JUST FOR YOU</div>
+    <h1>صباحكِ حلو يا إسراء</h1>
+    <p class="intro">وصلتك رسالة صغيرة…<br>لكنها طالعة من قلب كبير ❤️</p>
+
+    <div class="scene">
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="افتحي الظرف" aria-expanded="false">
+        <div class="env-back"></div>
+        <div class="letter-peek"></div>
+        <div class="front"></div>
+        <div class="flap"></div>
+        <div class="seal">♥</div>
+      </div>
+    </div>
+    <div class="tap-hint" id="hint">اضغطي على الختم لفتح رسالتك السرية</div>
+
+    <article class="letter" id="letter" aria-hidden="true">
+      <div class="small">A LETTER FOR ESRAA</div>
+      <h2>صباح الخير يا إسراء ❤️</h2>
+      <p>ما عندي خبر عاجل أقوله لك اليوم، غير إن فيه شخص بدأ يومه وهو يفكر فيك.</p>
+      <p>يمكن المسافة بين بروكسل وصنعاء طويلة، لكن حبيت أذكّرك إنك أول شخص أتمنى له صباحاً جميلاً.</p>
+      <p>أتمنى يومك يكون حلو مثلك، وأتمنى أكون سبب ابتسامتك اليوم.</p>
+      <div class="signature">من الشخص اللي يحبك ❤️</div>
+      <div class="heart-line">♡ &nbsp; ♡ &nbsp; ♡</div>
+    </article>
+
+    <button class="replay" id="replay" hidden>إعادة قراءة الرسالة</button>
+    <div class="footer">SEALED WITH LOVE · BRUSSELS TO SANA'A</div>
+  </main>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const letter = document.getElementById('letter');
+    const hint = document.getElementById('hint');
+    const replay = document.getElementById('replay');
+    let opened = false;
+    let audioContext;
+
+    // نغمة صباحية هادئة تُعزف بعد اللمس، لأن المتصفحات تمنع تشغيل الصوت تلقائياً.
+    function playSoftMelody() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        audioContext = audioContext || new AudioCtx();
+        if (audioContext.state === 'suspended') audioContext.resume();
+        const notes = [
+          [523.25, 0.00, 0.42], [659.25, 0.38, 0.42],
+          [783.99, 0.76, 0.58], [659.25, 1.30, 0.42],
+          [587.33, 1.70, 0.48], [659.25, 2.16, 0.75]
+        ];
+        const start = audioContext.currentTime + 0.08;
+        notes.forEach(([frequency, offset, duration]) => {
+          const oscillator = audioContext.createOscillator();
+          const gain = audioContext.createGain();
+          oscillator.type = 'sine';
+          oscillator.frequency.value = frequency;
+          gain.gain.setValueAtTime(0.0001, start + offset);
+          gain.gain.exponentialRampToValueAtTime(0.075, start + offset + 0.035);
+          gain.gain.exponentialRampToValueAtTime(0.0001, start + offset + duration);
+          oscillator.connect(gain);
+          gain.connect(audioContext.destination);
+          oscillator.start(start + offset);
+          oscillator.stop(start + offset + duration + 0.03);
+        });
+      } catch (error) {
+        // إذا لم يدعم الجهاز الصوت، تظل الرسالة تعمل بشكل طبيعي.
+      }
+    }
+
+    function openLetter() {
+      if (opened) return;
+      opened = true;
+      envelope.classList.add('open');
+      envelope.setAttribute('aria-expanded', 'true');
+      hint.textContent = 'رسالة صغيرة من القلب…';
+      playSoftMelody();
+      window.setTimeout(() => {
+        letter.classList.add('show');
+        letter.setAttribute('aria-hidden', 'false');
+        hint.textContent = 'أتمنى إنها رسمت ابتسامة على وجهك ❤️';
+        replay.hidden = false;
+      }, 650);
+    }
+
+    envelope.addEventListener('click', openLetter);
+    envelope.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openLetter();
+      }
+    });
+    replay.addEventListener('click', () => {
+      letter.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
+</body>
+</html>
